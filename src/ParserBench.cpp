@@ -35,6 +35,7 @@
 #include "BenchMETL.h"
 #include "BenchTinyExpr.h"
 #include "BenchNative.h"
+#include "BenchAmrexpr.h"
 
 #ifdef ENABLE_MPFR
 #include "BenchExprTkMPFR.h"
@@ -479,6 +480,10 @@ int main(int argc, const char *argv[])
    //
 
    benchmarks.push_back(std::make_shared<BenchExprTk   >()     );  // <-- Note: first parser becomes the reference!
+   benchmarks.push_back(std::make_shared<BenchAmrexpr  >(1)    );
+#ifdef _OPENMP
+   benchmarks.push_back(std::make_shared<BenchAmrexpr  >(4)    );
+#endif
    benchmarks.push_back(std::make_shared<BenchMuParser2>(false));
    benchmarks.push_back(std::make_shared<BenchMuParser2>()     );
    benchmarks.push_back(std::make_shared<BenchMuParserX>()     );

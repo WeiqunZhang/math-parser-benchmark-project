@@ -1,0 +1,9 @@
+#ifndef AMREXPR_CONFIG_H_
+#define AMREXPR_CONFIG_H_
+
+// #cmakedefine AMREXPR_USE_GPU
+// #cmakedefine AMREXPR_USE_CUDA
+// #cmakedefine AMREXPR_USE_HIP
+// #cmakedefine AMREXPR_USE_SYCL
+
+#endif /* AMREXPR_CONFIG_H_ */
