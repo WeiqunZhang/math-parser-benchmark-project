@@ -30,10 +30,10 @@
 #include "BenchExprTk.h"
 #include "BenchExprTkFloat.h"
 #include "BenchLepton.h"
-#include "BenchFParser.h"
+//#include "BenchFParser.h"
 #include "BenchMathExpr.h"
 #include "BenchMETL.h"
-#include "BenchTinyExpr.h"
+//#include "BenchTinyExpr.h"
 #include "BenchNative.h"
 #include "BenchAmrexpr.h"
 
@@ -489,9 +489,9 @@ int main(int argc, const char *argv[])
    benchmarks.push_back(std::make_shared<BenchMuParserX>()     );
    benchmarks.push_back(std::make_shared<BenchATMSP    >()     );
    benchmarks.push_back(std::make_shared<BenchLepton   >()     );
-   benchmarks.push_back(std::make_shared<BenchFParser  >()     );
+//   benchmarks.push_back(std::make_shared<BenchFParser  >()     );
    benchmarks.push_back(std::make_shared<BenchMathExpr >()     );
-   benchmarks.push_back(std::make_shared<BenchTinyExpr >()     );
+//   benchmarks.push_back(std::make_shared<BenchTinyExpr >()     );
    #if defined(_MSC_VER) && defined(NDEBUG)
    benchmarks.push_back(std::make_shared<BenchMTParser >()     ); // <-- Crash in debug mode
    #endif

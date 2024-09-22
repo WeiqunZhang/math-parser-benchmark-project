@@ -2,6 +2,9 @@ TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
+CONFIG += optimize_full
+
+TARGET = ParserBench
 
 # set up custom build directory
 #CONFIG(debug, debug|release) {
@@ -16,10 +19,10 @@ CONFIG -= qt
 #    RCC_DIR = ./build/release/.rcc
 #}
 
-INCLUDEPATH += muparser2
+INCLUDEPATH += muparser2 include
 
 
-QMAKE_CXXFLAGS += -std=c++11 -march=native -fopenmp
+QMAKE_CXXFLAGS += -std=c++17 -march=native -fopenmp
 QMAKE_LFLAGS += -fopenmp
 
 # remove possible other optimization flags
@@ -36,18 +39,29 @@ DEFINES += MUP_USE_OPENMP
 
 
 SOURCES += \
-    BenchATMSP.cpp \
-    BenchExprTk.cpp \
-    BenchExprTkFloat.cpp \
-    BenchLepton.cpp \
-    Benchmark.cpp \
-    BenchMathExpr.cpp \
-    BenchMuParser2.cpp \
-    BenchMuParserX.cpp \
-    cpuid.cpp \
-    FormelGenerator.cpp \
-    ParserBench.cpp \
-    Stopwatch.cpp \
+    src/BenchAmrexpr.cpp \
+    src/BenchATMSP.cpp \
+    src/BenchExprTk.cpp \
+    src/BenchExprTkFloat.cpp \
+    src/BenchLepton.cpp \
+    src/Benchmark.cpp \
+    src/BenchMathExpr.cpp \
+    src/BenchMuParser2.cpp \
+    src/BenchMuParserX.cpp \
+    src/BenchNative.cpp \
+    src/cpuid.cpp \
+    src/FormelGenerator.cpp \
+    src/ParserBench.cpp \
+    src/Stopwatch.cpp \
+    amrexpr/amrexpr_Arena.cpp \
+    amrexpr/amrexpr_BLassert.cpp \
+    amrexpr/amrexpr_Gpu.cpp \
+    amrexpr/amrexpr_Parser.cpp \
+    amrexpr/amrexpr_Parser_Exe.cpp \
+    amrexpr/amrexpr_parser.lex.cpp \
+    amrexpr/amrexpr_parser.tab.cpp \
+    amrexpr/amrexpr_Parser_Y.cpp \
+    amrexpr/amrexpr_Utility.cpp \
     muparser2/muParser.cpp \
     muparser2/muParserBase.cpp \
     muparser2/muParserBytecode.cpp \
@@ -59,6 +73,7 @@ SOURCES += \
     lepton/Operation.cpp \
     lepton/ExpressionTreeNode.cpp \
     lepton/ExpressionProgram.cpp \
+    lepton/CompiledExpression.cpp \
     MathExpr/mathexpr.cpp \
     muparserx/mpVariable.cpp \
     muparserx/mpValueCache.cpp \
@@ -91,7 +106,7 @@ SOURCES += \
     muparserx/mpIOprt.cpp \
     muparserx/mpIfThenElse.cpp \
     muparserx/mpICallback.cpp \
-    muparserx/mpIAggregator.cpp \
+#    muparserx/mpIAggregator.cpp \
     muparserx/mpFuncStr.cpp \
     muparserx/mpFuncNonCmplx.cpp \
     muparserx/mpFuncMatrix.cpp \
@@ -106,18 +121,38 @@ SOURCES += \
     libcpuid/asm-bits.c
 
 HEADERS += \
+    BenchAmrexpr.h \
     BenchATMSP.h \
     BenchExprTk.h \
     BenchExprTkFloat.h \
-    BenchFParser.h \
+#    BenchFParser.h \
     BenchLepton.h \
     Benchmark.h \
     BenchMathExpr.h \
     BenchMuParser2.h \
     BenchMuParserX.h \
+    BenchNative.h \
     cpuid.h \
     FormelGenerator.h \
     Stopwatch.h \
+    amrexpr/amrexpr_Arena.H \
+    amrexpr/amrexpr_BLassert.H \
+    amrexpr/amrexpr_Config.H \
+    amrexpr/amrexpr_Extension.H \
+    amrexpr/amrexpr_Gpu.H \
+    amrexpr/amrexpr_IOFormat.H \
+    amrexpr/amrexpr_Math.H \
+    amrexpr/amrexpr_Parser_Exe.H \
+    amrexpr/amrexpr_Parser.H \
+    amrexpr/amrexpr_parser.lex.h \
+    amrexpr/amrexpr_parser.lex.nolint.H \
+    amrexpr/amrexpr_parser.tab.h \
+    amrexpr/amrexpr_parser.tab.nolint.H \
+    amrexpr/amrexpr_Parser_Y.H \
+    amrexpr/amrexpr_REAL.H \
+    amrexpr/amrexpr_Stack.H \
+    amrexpr/amrexpr_TypeTraits.H \
+    amrexpr/amrexpr_Utility.H \
     muparser2/muParser.h \
     muparser2/muParserBase.h \
     muparser2/muParserBytecode.h \
